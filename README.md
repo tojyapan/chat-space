@@ -4,20 +4,20 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|username|string|null: false|
+|name|string|null: false|
 |email|string|null: false, unique: true|
 |password|string|null: false|
-|group_user_id|integer|null: false, foreign_key: true|
 
 ### Association
 - has_many :messages
+- has_many :group_users
 - has_many :groups, through: :group_users
 
 ## messages
 
 |Column|Type|Options|
 |------|----|-------|
-|body|text|null: false|
+|body|text||
 |image|string||
 |group_id|integer|null: false, foreign_key: true|
 |user_id|integer|null: false, foreign_key: true|
@@ -31,9 +31,10 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|group_user_id|integer|null: false, foreign_key: true|
 
 ### Association
+- has_many :messages
+- has_many :group_users
 - has_many :users, through: :group_users
 
 ## group_users
